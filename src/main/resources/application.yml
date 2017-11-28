@@ -1,0 +1,27 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: api-service
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    username: root
+    password: 123456
+    url: jdbc:log4jdbc:mysql://localhost:3306/fadmin?useUnicode=true&characterEncoding=utf8&useSSL=false
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+    hikari:
+      connection-test-query: select 1
+      minimum-idle: 3
+      maximum-pool-size: 10
+
+
+mybatis:
+  mapper-locations: classpath:mybatis/mappers/*Mapper.xml
+  type-aliases-package: cn.wglgg.springboot.hacking.entity
+mapper:
+  mappers:
+    - tk.mybatis.mapper.common.Mapper
+    - tk.mybatis.mapper.common.MySqlMapper
+  not-empty: false
+  identity: MYSQL
+
